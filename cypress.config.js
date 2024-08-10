@@ -7,7 +7,7 @@ module.exports = defineCypressConfig({
     setupNodeEvents(on, config) {
       const cyOn = wrapOn(on)
       replayPlugin(cyOn, config, {
-        apiKey: process.env.REPLAY_API_KEY,
+        apiKey: process.env.REPLAYTEAM_API_KEY,
         upload: true,
       });
       return config;
