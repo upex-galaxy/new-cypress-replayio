@@ -1,0 +1,25 @@
+name: End-to-end tests
+
+on: workflow_dispatch
+
+jobs:
+  cypress-replayio:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Replay Chromium
+      run: npx replayio install
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        browser: replay-chromium
+        spec: cypress/e2e/1-getting-started/todo.cy.js
+
+    - name: Upload replays
+      if: always()
+      uses: replayio/action-upload@v0.5.1
+      with:
+        api-key: ${{ secrets.REPLAY_API_KEY }}
