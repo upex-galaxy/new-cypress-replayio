@@ -1,6 +1,6 @@
 const { defineConfig: defineCypressConfig } = require("cypress");
 const { plugin: replayPlugin } = require("@replayio/cypress");
-import 'dotenv/config';
+require('dotenv').config()
 
 module.exports = defineCypressConfig({
   e2e: {
