@@ -1,5 +1,5 @@
 const { defineConfig: defineCypressConfig } = require("cypress");
-const { plugin: replayPlugin } = require("@replayio/cypress");
+const { plugin: replayPlugin, wrapOn } = require("@replayio/cypress");
 require('dotenv').config()
 
 module.exports = defineCypressConfig({
