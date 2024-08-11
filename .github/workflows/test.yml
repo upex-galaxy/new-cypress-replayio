@@ -4,8 +4,6 @@ on:
   push:
   workflow_dispatch:
 
-env:
-  REPLAYIO_APIKEY: ${{ secrets.REPLAYIO_APIKEY }}
 jobs:
   cypress-replayio:
     runs-on: ubuntu-22.04
@@ -22,10 +20,5 @@ jobs:
       with:
         browser: replay-chromium
         spec: cypress/e2e/1-getting-started/todo.cy.js
-
-    - name: Upload replays
-      if: always()
-      uses: replayio/action-upload@v0.5.1
-      with:
-        api-key: ${{ secrets.REPLAYIO_APIKEY }}
-        public: true
+      env:
+        REPLAYIO_APIKEY: ${{ secrets.REPLAYIO_APIKEY }}
